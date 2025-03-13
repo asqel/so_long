@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:22:04 by axlleres          #+#    #+#             */
-/*   Updated: 2025/02/26 16:14:02 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:12:37 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	*ft_calloc(size_t size)
 
 	if (size == 0)
 		return (NULL);
-
 	ptr = ft_malloc(size);
 	if (!ptr)
 		return (NULL);

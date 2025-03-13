@@ -1,0 +1,29 @@
+/* XPM */
+static const char *exit[] = {
+/* columns rows colors chars-per-pixel */
+"20 20 3 1 ",
+"  c black",
+". c #38002B",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXXXXXX",
+"XXX.XXXXXXXX.XXXXXXX",
+"XXXX....    X.XXXXXX",
+"XXXXX   .     .XXXXX",
+"XXXX     .    .XXXXX",
+"XXX...    .   . X.XX",
+"X..   ..  .  .  X.XX",
+".X      . . .    XXX",
+"XX  .... ...   ..XXX",
+"XX ..   ...   .  XXX",
+"XX.    .. ....   XXX",
+"X.     .  .      XXX",
+"X.X   .    ..   XXXX",
+"X.X   .      .  XX.X",
+"XX.X  .       ....XX",
+"XXX.X  .      XXXXXX",
+"XXX...X..   XXXXXXXX",
+"XXXXXXXXX...XXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX"
+};

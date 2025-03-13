@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 16:08:41 by axlleres          #+#    #+#             */
-/*   Updated: 2025/02/26 16:08:54 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:36:40 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,16 @@ int ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+void	ft_memcpy(void *dest, const void *src, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
 }
