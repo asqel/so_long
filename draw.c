@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 20:30:26 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/13 13:53:06 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:35:53 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_obj(int x, int y, t_context *ctx)
 	else if (ctx->map.map[y][x] == OBJ_EMPTY)
 		mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->ground_sprite, x2, y2);
 	else if (ctx->map.map[y][x] ==  OBJ_EXIT)
-		mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->exit_sprite, x2, y2);
+		mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->exit_sprite[0], x2, y2);
 }
 
 void	do_draw(t_context *ctx)

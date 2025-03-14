@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:35:59 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/13 15:48:45 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:06:06 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ typedef struct s_player
 }	t_player;
 
 #define SPRITE_COOLDOWN_TICK 10
-#define SPRITE_SIZE 20
+#define SPRITE_SIZE 80
+#define FPS 30
+
 
 typedef struct s_map
 {
@@ -80,10 +82,20 @@ void	ft_free(void *ptr);
 char	*read_file(char *path, int *err);
 int		parser(t_map *map, char *text, int *err);
 int		parse_map(t_map *map, char *path);
+int		map_is_valid(t_map *map, int *err);
 int		copy_map(t_map *copy, t_map *map);
 void	free_map(t_map *map);
 
 int		ft_strlen(char *str);
 void	set_error(int *err, int value);
+void	print_error(int err);
+void	ft_memcpy(void *dest, void *src, int n);
+
+void	free_player(t_player *p);
+
+void	do_draw(t_context *ctx);
+void	init_context(t_context *context, char *map_path);
+void	free_context(t_context *ctx);
+void	free_texture(void *mlx, void *texture);
 
 #endif

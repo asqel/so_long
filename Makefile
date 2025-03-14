@@ -26,3 +26,7 @@ fclean: clean
 re: fclean all
 
 .PHONY: all re clean fclean
+
+
+debug: all
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./so_long map

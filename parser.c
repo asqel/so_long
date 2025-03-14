@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:36:44 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/13 15:37:47 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:56:08 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ static int get_line_len(char *line)
 	while (line[len] != '\n' && line[len] != '\0')
 		len++;
 	return (len);
-}
-
-void print_map(t_map *map)
-{
-	printf("MAP\n");
-	for (int y = 0; y < map->height; y++) {
-		for (int x = 0; x < map->width; x++)
-			printf("%c", map->map[y][x]);
-		printf("\n");
-	}
 }
 
 static int is_obj_legal(char c)
@@ -103,10 +93,10 @@ int parse_map(t_map *map, char *path)
 	if (content == NULL)
 		return (err);
 	if (parser(map, content, &err) == -1)
-		return (err);
+		return (ft_free(content), err);
 	if (map_is_valid(map, &err) == -1)
-		return (err);
-	return (0);
+		return (ft_free(content), err);
+	return (ft_free(content), 0);
 }
 
 int	find_player(t_map *map, int *err)
@@ -241,7 +231,6 @@ int extend_flood(t_map *map, int y, int x)
 	set_co(co);
 	i = 0;
 	has_changed = 0;
-	print_map(map);
 	while (i < 4)
 	{
 		tmp = &(map->map[y + co[i][1]][x + co[i][0]]);
@@ -304,16 +293,17 @@ int 	map_is_valid(t_map *map, int *err)
 
 	if (copy_map(&copy, map) == -1)
 		return (set_error(err, ERR_MALLOC), -1);
-	if (find_player(map, err) == -1)
+	if (find_player(&copy, err) == -1)
 		return (free_map(&copy), -1);
-	if (check_exit(map, err) == -1)
+	if (check_exit(&copy, err) == -1)
 		return (free_map(&copy), -1);
-	if (check_walls(map, err) == -1)
+	if (check_walls(&copy, err) == -1)
 		return  (free_map(&copy), set_error(err, ERR_NO_WALL), -1);
-	if (count_coins(map) == 0)
+	if (count_coins(&copy) == 0)
 		return (free_map(&copy), set_error(err, ERR_NO_COIN), -1);
 	if (check_access(&copy, err) == -1)
 		return (free_map(&copy), -1);
 	free_map(&copy);
+	find_player(map, err);
 	return (0);
 }
