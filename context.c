@@ -18,23 +18,15 @@ void	init_context(t_context *context, char *map_path)
 
 void	free_context(t_context *ctx)
 {
-	int	i;
-
 	free_map(&ctx->map);
 	mlx_destroy_window(ctx->mlx, ctx->win);
 	ctx->win = NULL;
 	free_texture(ctx->mlx, ctx->coin_sprite);
-	free_texture(ctx->mlx, ctx->exit_sprite[0]);
-	free_texture(ctx->mlx, ctx->exit_sprite[1]);
-	free_texture(ctx->mlx, ctx->ground_sprite);
+	free_texture(ctx->mlx, ctx->exit_sprite);
+	free_texture(ctx->mlx, ctx->floor_sprite);
 	free_texture(ctx->mlx, ctx->wall_sprite);
-	i = 0;
-	while (i < 4)
-	{
-		free_texture(ctx->mlx, ctx->player_sprite[i][0]);
-		free_texture(ctx->mlx, ctx->player_sprite[i][1]);
-		free_texture(ctx->mlx, ctx->player_sprite[i][2]);
-		i++;
-	}
+	free_texture(ctx->mlx, ctx->player_sprite[0]);
+	free_texture(ctx->mlx, ctx->player_sprite[2]);
+	free_texture(ctx->mlx, ctx->player_sprite[3]);
 	free_mlx(ctx);
 }

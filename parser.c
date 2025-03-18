@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:36:44 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/14 16:56:08 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:18:31 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int parse_map(t_map *map, char *path)
 		return (ft_free(content), err);
 	if (map_is_valid(map, &err) == -1)
 		return (ft_free(content), err);
+	map->coins = count_coins(map);
 	return (ft_free(content), 0);
 }
 
@@ -154,9 +155,7 @@ int	check_exit(t_map *map, int *err)
 	return (0);
 }
 
-
-
-int	check_walls(t_map *map, int *err)
+int	check_walls(t_map *map)
 {
 	int	y;
 	int	x;
@@ -288,8 +287,6 @@ int	check_access(t_map *map, int *err)
 int 	map_is_valid(t_map *map, int *err)
 {
 	t_map	copy;
-	int		x;
-	int		y;
 
 	if (copy_map(&copy, map) == -1)
 		return (set_error(err, ERR_MALLOC), -1);
@@ -297,7 +294,7 @@ int 	map_is_valid(t_map *map, int *err)
 		return (free_map(&copy), -1);
 	if (check_exit(&copy, err) == -1)
 		return (free_map(&copy), -1);
-	if (check_walls(&copy, err) == -1)
+	if (check_walls(&copy) == -1)
 		return  (free_map(&copy), set_error(err, ERR_NO_WALL), -1);
 	if (count_coins(&copy) == 0)
 		return (free_map(&copy), set_error(err, ERR_NO_COIN), -1);

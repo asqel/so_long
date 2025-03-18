@@ -2,14 +2,15 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 NAME = so_long
-CC = cc
-CFLAGS = -Iminilibx-linux -lX11 -lXext -g
+CC = clang
+CFLAGS = -Iminilibx-linux -g -Wall -Werror -Wextra
+LDFLAG = -lX11 -lXext
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ) minilibx-linux/libmlx.a
-	$(CC) $(OBJ) minilibx-linux/libmlx.a -o $(NAME) $(CFLAGS)
+	$(CC) $(OBJ) minilibx-linux/libmlx.a -o $(NAME) $(CFLAGS) $(LDFLAG)
 
 minilibx-linux/libmlx.a:
 	make -C minilibx-linux

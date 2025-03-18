@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:35:59 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/14 17:06:06 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:32:09 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ typedef struct s_player
 {
 	int	x;
 	int	y;
-	int	coins;
-	int sprite_idx;
-	int sprite_cooldown;
+	char dir;
+	unsigned int move_count;
 }	t_player;
 
 #define SPRITE_COOLDOWN_TICK 10
@@ -60,6 +59,7 @@ typedef struct s_map
 	int			width;
 	int			height;
 	t_player	player;
+	int			coins;
 }	t_map;
 
 typedef struct s_context
@@ -67,11 +67,11 @@ typedef struct s_context
 	void	*mlx;
 	void	*win;
 	t_map	map;
-	void	*player_sprite[4][3];// up, right, down, left
+	void	*player_sprite[4];// up, right, down, left
 	void	*coin_sprite;
-	void	*exit_sprite[2]; // closed, open
+	void	*exit_sprite;
 	void	*wall_sprite;
-	void	*ground_sprite;
+	void	*floor_sprite;
 }	t_context;
 
 void	*ft_calloc(size_t size);
@@ -85,6 +85,7 @@ int		parse_map(t_map *map, char *path);
 int		map_is_valid(t_map *map, int *err);
 int		copy_map(t_map *copy, t_map *map);
 void	free_map(t_map *map);
+int		count_coins(t_map *map);
 
 int		ft_strlen(char *str);
 void	set_error(int *err, int value);
@@ -97,5 +98,7 @@ void	do_draw(t_context *ctx);
 void	init_context(t_context *context, char *map_path);
 void	free_context(t_context *ctx);
 void	free_texture(void *mlx, void *texture);
+void	free_mlx(t_context *ctx);
+void	init_textures(t_context *ctx);
 
 #endif

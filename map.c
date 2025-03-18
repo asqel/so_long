@@ -6,21 +6,11 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:31:37 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/13 16:45:55 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:57:11 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init_map(t_context *map, char *path)
-{
-	int		err;
-
-	map->map = (t_map){0};
-	err = parse_map(&map->map, path);
-
-
-}
 
 int	copy_map(t_map *copy, t_map *map)
 {

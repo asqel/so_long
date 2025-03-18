@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:22:04 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/12 19:12:37 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:37:37 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	*ft_realloc(void *ptr, size_t n_size, int fill_zero)
 	min_size = o_size;
 	if (n_size < o_size)
 		min_size = n_size;
-	i = 0;
-	while (i < min_size)
-		((char *)new_ptr)[i++] = ((char *)ptr)[i];
+	i = -1;
+	while (++i < min_size)
+		((char *)new_ptr)[i] = ((char *)ptr)[i];
 	if (fill_zero)
 		while (i < n_size)
 			((char *)new_ptr)[i++] = 0;
