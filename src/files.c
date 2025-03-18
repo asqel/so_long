@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:08:08 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/13 13:18:54 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:22:24 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_error(int *err, int value)
 	*err = value;
 }
 
-char *read_file_fd(int fd, int *size, int *err)
+char	*read_file_fd(int fd, int *size, int *err)
 {
 	char	*content;
 	int		alloc_size;
@@ -47,7 +47,7 @@ char *read_file_fd(int fd, int *size, int *err)
 	return (content);
 }
 
-char *read_file(char *path, int *err)
+char	*read_file(char *path, int *err)
 {
 	int		fd;
 	char	*content;

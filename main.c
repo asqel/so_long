@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:36:47 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 12:22:39 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:12:30 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	print_num(unsigned int n)
 void	move_player(t_context *ctx, int dir, int x, int y)
 {
 	ctx->map.player.dir = dir;
-	if (ctx->map.map[y][x] == OBJ_WALL
-		|| (ctx->map.map[y][x] == OBJ_EXIT && ctx->map.coins > 0))
+	if (ctx->map.map[y][x] == OBJ_WALL)
 		return ;
 	ctx->map.player.x = x;
 	ctx->map.player.y = y;
@@ -66,22 +65,30 @@ int	on_key(int key, t_context *ctx)
 		move_player(ctx, 3, ctx->map.player.x - 1, ctx->map.player.y);
 	else if (key == XK_d)
 		move_player(ctx, 1, ctx->map.player.x + 1, ctx->map.player.y);
+	ctx->need_redraw = 1;
 	return (0);
 }
 
 int	on_tick(t_context *param)
 {
-	mlx_clear_window(param->mlx, param->win);
-	do_draw(param);
+	if (param->need_redraw)
+	{
+		mlx_clear_window(param->mlx, param->win);
+		do_draw(param);
+	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_context	context;
-
 	if (argc != 2)
-		return (printf("Usage: %s <map_path>\n", argv[0]), 1);
+	{
+		print_stderr("Usage: ");
+		print_stderr(argv[0]);
+		print_stderr(" <map_path>\n");
+		return (1);
+	}
 	init_context(&context, argv[1]);
 	context.mlx = mlx_init();
 	context.win = mlx_new_window(

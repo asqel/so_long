@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:30:09 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/01 21:23:08 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:30:31 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	print_error2(int err)
 		print_stderr("Error no wall in map\n\tmap must be enclosed by wall\n");
 	else if (err == ERR_ACCESS_PARTS)
 		print_stderr("Error some parts are not accessible\n");
+	else if (err == ERR_SIZE)
+		print_stderr("Error map has invalid size\n");
 }
 
 void	print_error(int err)

@@ -1,9 +1,21 @@
-SRC = $(wildcard *.c)
+SRC =	src/alloc.c \
+		src/context.c \
+		src/draw.c \
+		src/error.c \
+		src/files.c \
+		src/map.c \
+		src/mlx.c \
+		src/parser.c \
+		src/parser2.c \
+		src/parser3.c \
+		src/str.c \
+		src/textures.c \
+		main.c
 OBJ = $(SRC:.c=.o)
 
 NAME = so_long
 CC = clang
-CFLAGS = -Iminilibx-linux -g -Wall -Werror -Wextra
+CFLAGS = -Iminilibx-linux -g -Wall -Werror -Wextra -Iinclude
 LDFLAG = -lX11 -lXext
 
 

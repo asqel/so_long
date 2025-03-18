@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:31:37 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 11:57:11 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:19:11 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	copy_map(t_map *copy, t_map *map)
 	return (0);
 }
 
-void free_map(t_map *map)
+void	free_map(t_map *map)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ void free_map(t_map *map)
 	ft_free(map->map);
 }
 
-void free_player(t_player *player)
+void	free_player(t_player *player)
 {
 	(void)player;
 }

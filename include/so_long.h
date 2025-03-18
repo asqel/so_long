@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:35:59 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 12:32:09 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:46:39 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define ERR_NO_WALL -12
 # define ERR_ACCESS_PARTS -13
 # define ERR_MAX -14
+# define ERR_SIZE -15
 
 typedef unsigned char	t_obj;
 
@@ -67,11 +68,12 @@ typedef struct s_context
 	void	*mlx;
 	void	*win;
 	t_map	map;
-	void	*player_sprite[4];// up, right, down, left
+	void	*player_sprite[4][2];// up, right, down, left
 	void	*coin_sprite;
 	void	*exit_sprite;
 	void	*wall_sprite;
 	void	*floor_sprite;
+	int		need_redraw;
 }	t_context;
 
 void	*ft_calloc(size_t size);
@@ -89,8 +91,10 @@ int		count_coins(t_map *map);
 
 int		ft_strlen(char *str);
 void	set_error(int *err, int value);
+void	print_stderr(char *s);
 void	print_error(int err);
 void	ft_memcpy(void *dest, void *src, int n);
+int		check_walls(t_map *map);
 
 void	free_player(t_player *p);
 
@@ -100,5 +104,15 @@ void	free_context(t_context *ctx);
 void	free_texture(void *mlx, void *texture);
 void	free_mlx(t_context *ctx);
 void	init_textures(t_context *ctx);
+
+
+int		count_coins(t_map *map);
+void	set_co(int co[4][2]);
+int		extend_flood(t_map *map, int y, int x);
+
+int		check_exit(t_map *map, int *err);
+int		do_flood(t_map *map);
+int		find_player(t_map *map, int *err);
+int		check_access(t_map *map, int *err);
 
 #endif
