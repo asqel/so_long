@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:32:20 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 13:18:49 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:29:17 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	try_load_texture(t_context *ctx, void **dest, char *path)
 	if (*dest == NULL)
 	{
 		free_context(ctx);
-		print_stderr("Error loading texture \"");
+		print_stderr("Error\n\tloading texture \"");
 		print_stderr(path);
 		print_stderr("\"\n");
 		exit(1);

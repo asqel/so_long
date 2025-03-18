@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:19:49 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 13:19:57 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:29:12 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	check_map_extension(char *path)
 	while (path[len] != '\0')
 		len++;
 	if (len < 4)
-		return (print_stderr("Error map must end in .ber\n"), exit(1));
+		return (print_stderr("Error\n\tmap must end in .ber\n"), exit(1));
 	if (!(path[len - 4] == '.' && path[len - 3] == 'b'
 			&& path[len - 2] == 'e' && path[len - 1] == 'r'))
-		return (print_stderr("Error map must end in .ber\n"), exit(1));
+		return (print_stderr("Error\n\tmap must end in .ber\n"), exit(1));
 }
 
 void	init_context(t_context *context, char *map_path)
