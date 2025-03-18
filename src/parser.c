@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:36:44 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 13:47:08 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:24:12 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,6 @@ int	parser(t_map *map, char *text, int *err)
 	i = 0;
 	while (text[i] != '\0')
 	{
-		if (text[i] == '\n')
-		{
-			i++;
-			continue ;
-		}
 		if (map->width != get_line_len(&text[i]))
 			return (set_error(err, ERR_NOT_RECT), -1);
 		map->height++;
@@ -78,6 +73,8 @@ int	parser(t_map *map, char *text, int *err)
 		if (map->map[map->height - 1] == NULL)
 			return (-1);
 		i += map->width;
+		if (text[i] == '\n')
+			i++;
 	}
 	return (0);
 }
