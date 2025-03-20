@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 20:35:59 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 13:46:39 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:10:49 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,15 @@ typedef unsigned char	t_obj;
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	char dir;
-	unsigned int move_count;
+	int				x;
+	int				y;
+	char			dir;
+	unsigned int	move_count;
 }	t_player;
 
-#define SPRITE_COOLDOWN_TICK 10
-#define SPRITE_SIZE 80
-#define FPS 30
-
+# define SPRITE_COOLDOWN_TICK 10
+# define SPRITE_SIZE 80
+# define FPS 30
 
 typedef struct s_map
 {
@@ -104,7 +103,6 @@ void	free_context(t_context *ctx);
 void	free_texture(void *mlx, void *texture);
 void	free_mlx(t_context *ctx);
 void	init_textures(t_context *ctx);
-
 
 int		count_coins(t_map *map);
 void	set_co(int co[4][2]);
