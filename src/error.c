@@ -6,7 +6,7 @@
 /*   By: axlleres <axlleres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:30:09 by axlleres          #+#    #+#             */
-/*   Updated: 2025/03/18 16:09:47 by axlleres         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:39:41 by axlleres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_error(int err)
 	else if (err == ERR_NO_PLAYER)
 		print_stderr("Error\n\tno player in map\n");
 	else if (err == ERR_NO_COIN)
-		print_stderr("Error\n\tno coin in map\n\tat least 1 coin is required\n");
+		print_stderr("Error\n\no coin in map\n\tat least 1 coin needed\n");
 	else
 		print_error2(err);
 }
