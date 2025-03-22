@@ -32,6 +32,7 @@ minilibx-linux/libmlx.a:
 
 clean:
 	rm -rf $(OBJ)
+	make -C minilibx-linux clean
 
 fclean: clean
 	rm -rf $(NAME)
